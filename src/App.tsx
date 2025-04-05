@@ -6,29 +6,27 @@ import SubmissionForm from './pages/SubmissionForm';
 import UserSubmissions from './pages/UserSubmissions';
 import AdminDashboard from './pages/AdminDashboard';
 import LoginPage from './pages/LoginPage';
-import RegistrationPage from './pages/RegistrationPage'; // Import Registration Page
+import RegistrationPage from './pages/RegistrationPage';
 import SuggestionDetailPage from './pages/SuggestionDetailPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ProtectedRoute from './components/ProtectedRoute';
-import Navbar from './components/Navbar'; // Import Navbar
+import Navbar from './components/Navbar';
 
 // Keep this commented out or remove it
 // import './App.css';
 
 function App() {
   return (
-    <div>
-      <Navbar /> {/* Add Navbar here */}
+    <div className="flex flex-col min-h-screen"> {/* Ensure full height */}
+      <Navbar /> {/* Navbar remains fixed at top */}
 
-      <div className="pt-16"> {/* Add padding top to prevent content overlap */}
+      {/* Main content area: takes remaining height and centers content */}
+      <main className="flex flex-grow flex-col items-center justify-center"> {/* Use flex-grow */}
         <Routes>
           {/* Landing Page (Root Path) */}
           <Route path="/" element={<LandingPage />} />
 
           {/* Submission Form Page */}
-          {/* --- Protected Routes --- */}
-
-          {/* Submission Form Page (Requires login) */}
           <Route
             path="/submit"
             element={
@@ -38,7 +36,7 @@ function App() {
             }
           />
 
-          {/* User's View Page (Requires login, any role) */}
+          {/* User's View Page */}
           <Route
             path="/my-submissions"
             element={
@@ -48,7 +46,7 @@ function App() {
             }
           />
 
-          {/* Admin Dashboard Page (Requires login and 'admin' role) */}
+          {/* Admin Dashboard Page */}
           <Route
             path="/admin"
             element={
@@ -58,7 +56,7 @@ function App() {
             }
           />
 
-          {/* Suggestion Detail Page (Requires login) */}
+          {/* Suggestion Detail Page */}
           <Route
             path="/suggestion/:id"
             element={
@@ -69,18 +67,15 @@ function App() {
           />
 
           {/* --- Public Routes --- */}
-
-          {/* Login Page */}
           <Route path="/login" element={<LoginPage />} />
-
-          {/* Registration Page */}
           <Route path="/register" element={<RegistrationPage />} />
 
           {/* Catch-all for Not Found Pages */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      </div> {/* Close padding div */}
-      {/* Footer could go here, outside <Routes> */}
+      </main> {/* Close main content area */}
+
+      {/* Footer could go here */}
     </div>
   );
 }

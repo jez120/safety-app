@@ -8,8 +8,9 @@ function LandingPage() {
   // --- End Simulation ---
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center p-8">
-      <div className="max-w-md w-full bg-white p-8 rounded-xl shadow-md text-center">
+    // Removed layout classes - parent in App.tsx handles centering. Added padding for content spacing.
+    <div className="p-8 w-full max-w-md"> {/* Let content define its width/padding */}
+      <div className="w-full bg-white p-8 rounded-xl shadow-md text-center">
         <h1 className="text-3xl font-semibold text-gray-800 mb-6">
           Safety Suggestion Portal
         </h1>
@@ -24,26 +25,13 @@ function LandingPage() {
           >
             Submit New Safety Suggestion
           </Link>
-
-          {isAdmin && (
-            <Link
-              to="/admin"
-              className="block w-full bg-gray-700 hover:bg-gray-800 text-white font-medium py-3 px-4 rounded-lg transition duration-150 ease-in-out"
-            >
-              Admin Dashboard
-            </Link>
-          )}
         </div>
 
-        {/* --- Temporary toggle for simulation --- */}
-        <button
-          onClick={() => setIsAdmin(!isAdmin)}
-          className="mt-8 text-sm text-gray-500 hover:text-gray-700 underline"
-        >
-          Toggle Admin View (Simulation)
-        </button>
-        {/* --- End Temporary Toggle --- */}
+        {/* Temporary link removed */}
+
       </div>
+
+      {/* Temporary toggle button removed */}
     </div>
   );
 }
